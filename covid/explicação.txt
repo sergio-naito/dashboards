@@ -1,0 +1,23 @@
+Resumo do código:
+
+O código é responsável por criar um painel de controle interativo usando a biblioteca Dash para visualizar dados relacionados à COVID-19 no Brasil. O painel exibe gráficos de casos confirmados e óbitos confirmados, além de um resumo dos dados do estado selecionado.
+
+Importação de bibliotecas: As bibliotecas necessárias para o código são importadas, incluindo o Plotly para criação de gráficos, o Dash para criação do painel de controle e o Pandas para manipulação de dados em formato de tabela.
+
+Carregamento dos dados: Os dados são carregados a partir de um arquivo CSV hospedado no GitHub. O Pandas é usado para ler o arquivo CSV e criar um DataFrame chamado df.
+
+Criação da aplicação Dash: É criada uma instância da aplicação Dash chamada app.
+
+Definição do layout: O layout do painel de controle é definido usando componentes HTML e Dash. São criados gráficos de linha para casos confirmados e óbitos confirmados, um menu suspenso para selecionar o estado, um seletor de data para escolher a data final do intervalo de tempo dos dados e um painel com informações resumidas do estado selecionado.
+
+Funções de filtragem de dados: Duas funções são definidas para filtrar o DataFrame df com base no estado e na data selecionados. A primeira função, filter_data, filtra o DataFrame por estado e data, enquanto a segunda função, filter_data2, filtra por estado e intervalo de datas. Ambas as funções retornam um DataFrame filtrado.
+
+Definição da primeira data disponível: A primeira data disponível no DataFrame df é atribuída à variável start_date.
+
+Callback para atualização dos gráficos: É definida uma função de callback chamada update_graph_casos que recebe o estado selecionado e a data final como inputs. Essa função chama as funções de filtragem de dados para obter um DataFrame filtrado. Em seguida, são criadas duas figuras usando a biblioteca Plotly para representar o número de novos casos confirmados e o número de novos óbitos confirmados ao longo do tempo. Os gráficos são atualizados de acordo com o estado selecionado e a data final.
+
+Callback para atualização dos dados do estado: É definida uma função de callback chamada update_data que é acionada sempre que há uma alteração no valor do menu suspenso de estados ou na data selecionada. Essa função chama a função de filtragem de dados para obter um DataFrame filtrado e, em seguida, atribui os valores correspondentes às variáveis que representam o estado, a data, o número de casos, o número de óbitos, o número de recuperados e o número de novos casos. Esses valores são retornados para serem exibidos nos componentes correspondentes no layout.
+
+Execução do aplicativo Dash: O código verifica se o módulo está sendo executado diretamente e, nesse caso, chama o método run_server da instância app para iniciar o aplicativo Dash.
+
+O aplicativo resultante exibe um painel de controle interativo onde é possível selecionar um estado e uma data para visualizar os gráficos de casos confirmados e óbitos confirmados, além de exibir um resumo dos dados do estado selecionado. Os gráficos são atualizados dinamicamente de acordo com as seleções feitas pelo usuário.
