@@ -1,0 +1,17 @@
+name: Run app.py
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Python
+        run: sudo apt install python3
+
+      - name: Run script
+        run: python3 app.py
